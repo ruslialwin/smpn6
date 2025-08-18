@@ -1,0 +1,85 @@
+
+body{
+  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Inter', sans-serif;
+
+  background-image: linear-gradient(0.25turn,rgba(62, 81, 63, 0.7), rgba(178, 201, 155, 0.337)), url("../img/bg.jpg");
+  background-size: cover;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+
+
+/* BAGIAN TABLE */
+
+.styled-table {
+    border-spacing: 0px;
+    border-collapse: inherit;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: 1px;
+    table-layout: auto;
+  }
+  
+  .styled-table thead tr th {
+    background-color: #009879;
+    color: #ffffff;
+ 
+    border: 1px solid black;
+    text-align: center
+  }
+  
+  .styled-table th,
+  .styled-table td {
+      padding: 12px 15px;
+  }
+  
+  .styled-table tbody tr td{
+    /* border-bottom: 1px solid #e3dada; */
+    border: thin solid rgb(0, 0, 0);
+    text-align: center
+  }
+
+  .styled-table tbody tr td:nth-of-type(even) {
+    text-align: left !important;
+  }
+  
+  .styled-table tbody tr:nth-of-type(odd) {
+    background-color: #dfdbdb;
+  }
+
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: rgb(217, 224, 214);
+  }
+  
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+/* SECTION TABEL */
+
+.tabel {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.tabel .warna{
+  color: #e0f7f2;
+  border-collapse: separate;
+}
+
+.tabel h2{
+  font-size: 60px;
+  font-weight: 600;
+}
