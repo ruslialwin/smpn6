@@ -195,116 +195,6 @@
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            var ctx = document.getElementById("myChart").getContext('2d');
-                            var myChart = new Chart(ctx, {
-                                type: 'pie',
-                                data: {
-                                    labels: ["Laki-laki", "Perempuan"],
-                                    datasets: [{
-                                        label: '',
-                                        data: [
-                                        <?php 
-                                       /*  $jumlah_laki = mysqli_query($koneksi,"select * from siswa where jenis_kelamin='L'");
-                                        echo mysqli_num_rows($jumlah_laki); */
-
-                                        // memanggil function jenis_kelamin_siswa('L')
-                                        $jumlah_laki = mysqli_query($koneksi, "SELECT jenis_kelamin_siswa('L')");
-                                        $jlhlaki = mysqli_fetch_array($jumlah_laki);
-                                        echo $jlhlaki["jenis_kelamin_siswa('L')"];
-                                        ?>, 
-                                        <?php 
-                                        /*  $jumlah_perempuan = mysqli_query($koneksi, "SELECT jenis_kelamin_siswa('L')");
-                                        echo $jumlah_perempuan; */
-
-                                        //memanggil function jenis_kelamin_siswa('P')
-                                        $jumlah_perempuan = mysqli_query($koneksi,"SELECT jenis_kelamin_siswa('P')");
-                                        $jlhp = mysqli_fetch_array($jumlah_perempuan);
-                                        echo $jlhp["jenis_kelamin_siswa('P')"];
-                                       
-                                        ?>
-                                        ],
-                                        backgroundColor: [
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 99, 132, 0.2)'
-                                        ],
-                                        borderColor: [
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(227, 28, 121, 1)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        yAxes: [{
-                                            ticks: {
-                                                beginAtZero:true
-                                            }
-                                        }]
-                                    }
-                                }
-                            });
-
-                            var ct = document.getElementById("ChartSiswa").getContext('2d');
-                            var ChartSiswa = new Chart(ct, {
-                                type: 'bar',
-                                data: {
-                                    labels: ["2020/2021", "2021/2022", "2022/2023"],
-                                    datasets: [{
-                                        label: 'Jumlah Data Siswa',
-                                        data: [
-                                        <?php 
-
-                                        // memanggil function tahun_pelajaran_siswa('2020/2021')
-                                        $jtp = mysqli_query($koneksi, "SELECT tahun_pelajaran_siswa('2020/2021')");
-                                        $jt1 = mysqli_fetch_array($jtp);
-                                        echo $jt1["tahun_pelajaran_siswa('2020/2021')"];
-                                        ?>, 
-                                        <?php 
-                                    
-                                        //memanggil function tahun_pelajaran_siswa('2021/2022')
-                                        $jtp2 = mysqli_query($koneksi,"SELECT tahun_pelajaran_siswa('2021/2022')");
-                                        $jt2 = mysqli_fetch_array($jtp2);
-                                        echo $jt2["tahun_pelajaran_siswa('2021/2022')"];
-                                       
-                                        ?>,
-                                        <?php 
-                                    
-                                        //memanggil function tahun_pelajaran_siswa('2022/2023')
-                                        $jtp3 = mysqli_query($koneksi,"SELECT tahun_pelajaran_siswa('2022/2023')");
-                                        $jt3 = mysqli_fetch_array($jtp3);
-                                        echo $jt3["tahun_pelajaran_siswa('2022/2023')"];
-                                       
-                                        ?>
-                                        ],
-                                        
-                                        backgroundColor: [
-                                        'rgba(255, 215, 0, 0.2)',
-                                        'rgba(255, 215, 0, 0.2)',
-                                        'rgba(255, 215, 0, 0.2)'
-                                        ],
-                                        borderColor: [
-                                        'rgba(255, 255, 0, 1)',
-                                        'rgba(255, 255, 0, 1)',
-                                        'rgba(255, 255, 0, 1)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        yAxes: [{
-                                            ticks: {
-                                                beginAtZero:true
-                                            }
-                                        }]
-                                    }
-                                }
-                            });
-
-                            
-                        </script>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -1129,13 +1019,80 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script>
             // Initialize the Simple-DataTables library
             const table = new simpleDatatables.DataTable("#example");
         </script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["Laki-laki", "Perempuan"],
+                    datasets: [{
+                        data: [
+                            <?php 
+                            $jumlah_laki = mysqli_query($koneksi,"SELECT * FROM siswa WHERE jenis_kelamin='L'");
+                            echo mysqli_num_rows($jumlah_laki);
+                            ?>, 
+                            <?php 
+                            $jumlah_perempuan = mysqli_query($koneksi,"SELECT * FROM siswa WHERE jenis_kelamin='P'");
+                            echo mysqli_num_rows($jumlah_perempuan);
+                            ?>
+                        ],
+                        backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                        borderColor: ['rgba(54, 162, 235, 1)', 'rgba(227, 28, 121, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: { yAxes: [{ ticks: { beginAtZero:true } }] }
+                }
+            });
+
+            var ct = document.getElementById("ChartSiswa").getContext('2d');
+            var ChartSiswa = new Chart(ct, {
+                type: 'bar',
+                data: {
+                    labels: ["2020/2021", "2021/2022", "2022/2023"],
+                    datasets: [{
+                        label: 'Jumlah Data Siswa',
+                        data: [
+                            <?php 
+                            $jtp = mysqli_query($koneksi, "SELECT COUNT(*) AS tahun FROM view_kelas_siswa WHERE tahun_pelajaran='2020/2021'");
+                            $jt1 = mysqli_fetch_array($jtp);
+                            echo $jt1["tahun"];
+                            ?>, 
+                            <?php 
+                            $jtp2 = mysqli_query($koneksi,"SELECT COUNT(*) AS tahun FROM view_kelas_siswa WHERE tahun_pelajaran='2021/2022'");
+                            $jt2 = mysqli_fetch_array($jtp2);
+                            echo $jt2["tahun"];
+                            ?>,
+                            <?php 
+                            $jtp3 = mysqli_query($koneksi,"SELECT COUNT(*) AS tahun FROM view_kelas_siswa WHERE tahun_pelajaran='2022/2023'");
+                            $jt3 = mysqli_fetch_array($jtp3);
+                            echo $jt3["tahun"];
+                            ?>
+                        ],
+                        backgroundColor: ['rgba(255, 215, 0, 0.2)', 'rgba(255, 215, 0, 0.2)', 'rgba(255, 215, 0, 0.2)'],
+                        borderColor: ['rgba(255, 255, 0, 1)', 'rgba(255, 255, 0, 1)', 'rgba(255, 255, 0, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+        </script>
     </body>
 </html>
